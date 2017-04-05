@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab2
+namespace lab3
 {
     class Program
     {
         static void Main(string[] args)
         {
-            DynamicArray arr = new DynamicArray(1);
+            var arr = new DynamicArray(1);
+            var arraySizeService = new ArraySizeService();
+
+            arr.SizeChanged += arraySizeService.OnSizeChanged;
 
 
             Console.WriteLine("Inital state: ");
@@ -46,9 +49,9 @@ namespace lab2
             Console.WriteLine("");
 
 
-            Console.WriteLine("arr[4] = 6: ");
+            Console.WriteLine("arr[2] = 6: ");
             Console.WriteLine("---------------");
-            arr[3] = 6;
+            arr[2] = 6;
             arr.display();
             Console.WriteLine("---------------");
 

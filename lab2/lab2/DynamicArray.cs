@@ -4,10 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab2
+namespace lab3
 {
+
+    class DynamicArrayArgs : EventArgs
+    {
+        public int size { get; set; }
+    }
+
     class DynamicArray
     {
+
+
+       
+        public event EventHandler<DynamicArrayArgs> SizeChanged;
+
         int[] arr;
         int size;
 
@@ -68,11 +79,6 @@ namespace lab2
                     }
 
 
-                    //Console.WriteLine("size " + size);
-
-                    //Console.WriteLine("arr.lenght " + arr.Length);
-
-                    //Console.WriteLine("i " + i);
 
 
                     if (size < i)
@@ -86,6 +92,8 @@ namespace lab2
 
                     arr[i] = value;
                     size++;
+
+                    OnSizeChanged();
                 }
        
             }
@@ -93,7 +101,7 @@ namespace lab2
 
         public void display()
         {
-            Console.WriteLine("The size of the array is {0}", size);
+
             for (int i = 0; i < size; i++)
             {
                 Console.Write(arr[i] + " ");
@@ -109,6 +117,7 @@ namespace lab2
             Array.Resize(ref arr, arr.Length * 2);
             size++;
             arr[size-1] = what;
+            OnSizeChanged();
         }
 
 
@@ -122,6 +131,12 @@ namespace lab2
                 arr[i] = -1;
             }
          
+        }
+
+        public virtual void OnSizeChanged()
+        {
+            if (SizeChanged != null)
+                SizeChanged(this, new DynamicArrayArgs() {size = size });
         }
     }
 }
