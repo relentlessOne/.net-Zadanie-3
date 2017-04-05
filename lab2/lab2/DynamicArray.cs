@@ -15,8 +15,6 @@ namespace lab3
     class DynamicArray
     {
 
-
-       
         public event EventHandler<DynamicArrayArgs> SizeChanged;
 
         int[] arr;
@@ -66,7 +64,6 @@ namespace lab3
                 {
 
 
-
                     bool stopMemoryReserving = false;
 
 
@@ -77,8 +74,6 @@ namespace lab3
                         if (arr.Length > i)
                             stopMemoryReserving = true;
                     }
-
-
 
 
                     if (size < i)
@@ -136,7 +131,7 @@ namespace lab3
         public virtual void OnSizeChanged()
         {
             if (SizeChanged != null)
-                SizeChanged(this, new DynamicArrayArgs() {size = size });
+                SizeChanged(this, new DynamicArrayArgs() {size = size});
         }
     }
 }

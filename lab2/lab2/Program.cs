@@ -16,6 +16,7 @@ namespace lab3
             arr.SizeChanged += arraySizeService.OnSizeChanged;
 
 
+
             Console.WriteLine("Inital state: ");
             Console.WriteLine("---------------");
             arr.display();
@@ -62,6 +63,9 @@ namespace lab3
             arr[9] = 16;
             arr.display();
             Console.WriteLine("---------------");
+
+
+        
 
             Console.WriteLine("Press enter to close...");
             Console.ReadLine();
